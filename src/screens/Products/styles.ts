@@ -1,3 +1,4 @@
+import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
@@ -8,6 +9,13 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.base_layout};
 `;
 
-export const ProductsList = styled.FlatList`
-  
+export const ProductsList = styled.View`
+  margin-top: ${RFValue(30)}px;
+
+  align-self: center;
+
+  width: 80%;
+  height: 500px;
+
+  background-color: green;
 `;

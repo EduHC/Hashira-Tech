@@ -7,25 +7,16 @@ import {
 
 import { StepViewer } from '../../components/StepViewer';
 import { SearchField } from '../../components/SearchField';
-import { Text } from 'react-native';
-
-const produtos = [1, 2, 3, 4]
+import Header from '../../components/Header';
 
 export default function Products() {
   return (
     <Container>
+      <Header header_text="Produtos"/>
       <StepViewer />
       <SearchField />
 
-      <ProductsList 
-        data={produtos} 
-        keyExtractor={produto => String(produto)}
-        renderItem={(produto) => {
-          return (
-            <Text>{produto}</Text>
-          )
-        }}
-      />
+      <ProductsList />
     </Container>
   );
 }

@@ -25,7 +25,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar style='light' />
+      <StatusBar hidden={true} />
       <Products />
     </ThemeProvider>
   );
