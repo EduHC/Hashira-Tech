@@ -1,10 +1,23 @@
 import React from 'react';
+import Svg from 'react-native-svg';
 
-
-import { Container } from './styles';
+import {
+   Container,
+   BallOne,
+   BallTwo,
+   BallThree,
+   BallFour
+  } from './styles';
 
 export function StepViewer() {
   return (
-    <Container />
+    <Container>
+      <Svg >
+        <BallOne />
+        <BallTwo />
+        <BallThree />
+        <BallFour />
+      </Svg>
+    </Container>
   ); 
 }
