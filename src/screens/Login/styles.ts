@@ -25,7 +25,7 @@ export const TextIntro = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-size: ${RFValue(40)}px;;
+  font-size: ${RFValue(36)}px;
   color: ${({ theme }) => theme.colors.title};
   letter-spacing: 5px;
 `;
@@ -54,6 +54,7 @@ export const NameInput = styled.TextInput.attrs({
 
   font-size: ${RFValue(20)}px;
   font-family: ${({ theme }) => theme.fonts.regular};
+  color: ${({ theme }) => theme.colors.text};
 
   margin-bottom: ${RFPercentage(6)}px;
 `;
@@ -64,6 +65,7 @@ export const PasswordInput = styled.TextInput.attrs({
 })`
   border-bottom-width: 1px;
   border-color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.text};
 
   font-size: ${RFValue(20)}px;
   font-family: ${({ theme }) => theme.fonts.regular};

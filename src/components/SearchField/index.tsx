@@ -1,9 +1,23 @@
 import React from 'react';
+import { TextInputProps } from 'react-native';
 
-import { Container } from './styles';
+import { 
+  Container,
+  SearchInput,
+  Logo
+} from './styles';
 
-export function SearchField() {
+interface Props extends TextInputProps {
+  text: string;
+}
+
+export function SearchField({
+  text
+} : Props) {
   return (
-    <Container />
+    <Container >
+      <SearchInput placeholder={text}/>
+      <Logo />
+    </Container>
   ); 
 }

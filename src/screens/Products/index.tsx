@@ -14,7 +14,7 @@ export default function Products() {
     <Container>
       <Header header_text="Produtos"/>
       <StepViewer />
-      <SearchField />
+      <SearchField text="Informe o produto..."/>
 
       <ProductsList />
     </Container>

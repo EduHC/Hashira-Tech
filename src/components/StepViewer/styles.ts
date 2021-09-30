@@ -19,7 +19,7 @@ export const Container = styled.View`
 export const BallOne = styled(Circle).attrs(({ theme }) => ({
   cx: 16,
   cy: 14,
-  r: 10,
+  r: 8,
   stroke: theme.colors.components,
   strokeWidth: '1'
 }))`
@@ -28,7 +28,7 @@ export const BallOne = styled(Circle).attrs(({ theme }) => ({
 export const BallTwo = styled(Circle).attrs(({ theme }) => ({
   cx: 75,
   cy: 14,
-  r: 10,
+  r: 8,
   stroke: theme.colors.components,
   strokeWidth: '1'
 }))`
@@ -37,7 +37,7 @@ export const BallTwo = styled(Circle).attrs(({ theme }) => ({
 export const BallThree = styled(Circle).attrs(({ theme }) => ({
   cx: 140,
   cy: 14,
-  r: 10,
+  r: 8,
   stroke: theme.colors.components,
   strokeWidth: '1'
 }))`
@@ -46,7 +46,7 @@ export const BallThree = styled(Circle).attrs(({ theme }) => ({
 export const BallFour = styled(Circle).attrs(({ theme }) => ({
   cx: 200,
   cy: 14,
-  r: 10,
+  r: 8,
   stroke: theme.colors.components,
   strokeWidth: '1'
 }))`
