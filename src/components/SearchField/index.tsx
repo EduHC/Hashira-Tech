@@ -1,5 +1,4 @@
 import React from 'react';
-import { TextInputProps } from 'react-native';
 
 import { 
   Container,
@@ -7,7 +6,7 @@ import {
   Logo
 } from './styles';
 
-interface Props extends TextInputProps {
+interface Props {
   text: string;
 }
 

@@ -20,7 +20,9 @@ export const TextIntro = styled.View`
   justify-content: center;
   align-items: center;
   align-self: center;
+
   width: 80%;
+  
   margin-bottom: ${RFValue(80)}px;
 `;
 
