@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { 
   Container,
@@ -13,6 +13,9 @@ import {
 import { StepViewer } from '../../components/StepViewer';
 import { SearchField } from '../../components/SearchField';
 import Header from '../../components/Header';
+import api from '../../services/api';
+import axios from 'axios';
+
 
 interface DataProps {
   id: string;
@@ -66,7 +69,25 @@ const data: DataProps[] = [
   }
 ];
 
+
+
 export default function Products() {
+  const [teste, setTeste] = useState({});
+
+  async function GetData() {
+    try {
+      var temp = await api.get('/products/153');
+      setTeste(temp);
+    } catch (err) {
+      console.log('Error: ' + err.message)
+    }
+  }
+
+  useEffect(() => {
+    GetData();
+  }, [])
+
+
   return (
     <Container>
       <Header header_text="Produtos"/>

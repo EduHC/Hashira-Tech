@@ -39,7 +39,7 @@ export const ProductCard = styled.View<ProductCardProps>`
 
 export const ProductImage = styled.Image`
   margin-top: ${RFValue(5)}px;
-  
+ 
   width: ${RFValue(100)}px;
   height: ${RFValue(100)}px;
 `;
