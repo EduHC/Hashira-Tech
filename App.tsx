@@ -11,6 +11,7 @@ import {
 
 import theme from './src/global/styles/theme';
 import Login from './src/screens/Login';
+import Cart from './src/screens/Cart';
 import Products from './src/screens/Products';
 
 export default function App() {
@@ -26,7 +27,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar hidden={true} />
-      <Products />
+      <Cart />
     </ThemeProvider>
   );
 }

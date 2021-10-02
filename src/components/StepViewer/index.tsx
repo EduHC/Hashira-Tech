@@ -9,7 +9,7 @@ import {
    BallFour
   } from './styles';
 
-export function StepViewer() {
+export default function StepViewer() {
   return (
     <Container>
       <Svg >
