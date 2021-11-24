@@ -22,8 +22,8 @@ import {
 } from './styles';
 
 import Header from '../../components/Header';
-import StepViewer from '../../components/StepViewer';
-import Button from '../../components/Button';
+import { StepViewer } from '../../components/StepViewer';
+import { Button } from '../../components/Button';
 
 interface DataProps {
   id: string;

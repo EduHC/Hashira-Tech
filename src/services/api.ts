@@ -2,36 +2,22 @@ import axios from 'axios';
 import { oauth } from './OAuth';
 
 const api = axios.create({
-  baseURL: 'http://hashiratech.com.br/wp-json/wc/v3',
-  params: {
-    consumer_key: oauth.consumer.key,
-    consumer_secret: oauth.consumer.secret
-  }
+  baseURL: 'https://hashiratech.com.br/wp-json/wc/v3'
 });
-
-let sourceRequest = {};
 
 api.interceptors.request.use(
   request => {
+  
+    request.url = request.url + `?consumer_key=${oauth.consumer.key}&consumer_secret=${oauth.consumer.secret}`
 
-    const parameters = oauth.authorize({
-      url: request.baseURL + request.url,
-      method: request.method
-    }, oauth.consumer);
-
-    const paramString = `?oauth_consumer_key=${parameters.oauth_consumer_key}&oauth_signature_method=${parameters.oauth_signature_method}&oauth_timestamp=${parameters.oauth_timestamp}&oauth_nonce=${parameters.oauth_nonce}&oauth_version=${parameters.oauth_version}&oauth_signature=${parameters.oauth_signature}`;
-    const teste2 = `?consumer_key=${oauth.consumer.key}&consumer_secret=${oauth.consumer.secret}`
-
-    request.headers['Content-Type'] = 'application/json';
-
-    //console.log('To no interceptor ' + JSON.stringify(request));
+    //console.log('To no interceptor ' + JSON.stringify(request.url));
     return request;
   }
 );
 
 api.interceptors.response.use(
   response => {
-    console.log(JSON.stringify(response));
+    console.log(JSON.stringify(response.data.id));
   }
 )
 

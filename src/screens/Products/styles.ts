@@ -33,7 +33,7 @@ export const ProductCard = styled.View<ProductCardProps>`
   margin-bottom: 20px;
   padding: 10px;
 
-  flex: ${({ item_index, length }) => (item_index + 1) === length ? 0.5 : 1};
+  flex: ${({ item_index, length }) => (item_index + 1) === length ? 1 : 1};
   align-items: center;
 `;
 
