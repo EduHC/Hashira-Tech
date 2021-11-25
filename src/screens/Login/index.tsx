@@ -9,22 +9,24 @@ import {
   Subtitle,
   LoginSection,
   NameInput,
-  PasswordInput
+  PasswordInput,
+  ButtonText,
+  LoginButton
 } from './styles';
 
 import { Button } from '../../components/Button';
 
-export default function Login(){
+export default function Login({ navigation }) {
   return (
     <Container>
       <TopImages>
-        <Image 
+        <Image
           source={require('../../assets/login_png_2.png')}
           style={{
             position: 'absolute'
           }}
         />
-        <Image source={require('../../assets/login_png_1.png')}/>
+        <Image source={require('../../assets/login_png_1.png')} />
       </TopImages>
 
       <TextIntro>
@@ -36,8 +38,12 @@ export default function Login(){
         <NameInput />
         <PasswordInput />
       </LoginSection>
-            
-      <Button button_text="Entrar"/>
+
+      <LoginButton
+        onPress={() => navigation.navigate('Clients')}
+      >
+        <ButtonText>Entrar</ButtonText>
+      </LoginButton>
     </Container>
   );
 }

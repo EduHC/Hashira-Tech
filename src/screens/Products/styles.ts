@@ -75,3 +75,25 @@ export const ProductPrice = styled.Text`
 
   margin-top: ${RFValue(10)}px;
 `;
+
+export const Header = styled.View`
+  width: 100%;
+  height: ${RFValue(85)}px;
+
+  align-self: center;
+  align-items: center;
+
+  flex-direction: row;
+  justify-content: center;
+
+  background-color: ${({ theme }) => theme.colors.primary};
+`;
+
+export const HeaderText = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: ${RFValue(36)}px;
+
+  color: ${({ theme }) => theme.colors.title};
+
+  align-self: center;
+`;

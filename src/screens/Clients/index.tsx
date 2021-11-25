@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
+import { Feather } from '@expo/vector-icons'; 
 
 import { StepViewer } from '../../components/StepViewer';
 import { SearchField } from '../../components/SearchField';
-import Header from '../../components/Header';
 import api from '../../services/api';
 
 import {
@@ -15,7 +15,9 @@ import {
   TextView,
   ClientCpf,
   InvisibleLine,
-  Line
+  Line,
+  Header,
+  HeaderText
 } from './styles';
 
 interface DataProps {
@@ -71,7 +73,7 @@ const data: DataProps[] = [
 ];
 
 
-export default function Products() {
+export default function Products({ navigation }) {
   const [teste, setTeste] = useState({});
   const [selectedClient, setSelectedClient] = useState({});
 
@@ -88,13 +90,29 @@ export default function Products() {
     GetData();
   }, [])*/
 
-  const handleOnPress = (client : DataProps) => {
+  const handleOnPress = (client: DataProps) => {
     setSelectedClient(client);
   }
 
   return (
     <Container>
-      <Header header_text="Clientes" />
+      <Header>
+        <TouchableOpacity
+          style={{ 
+            position: 'absolute',
+            left: 20,
+            top: 25
+          }}
+          onPress={() => navigation.goBack()}
+        >
+          <Feather 
+            name="arrow-left"
+            color="#6B2F23"
+            size={30}
+          />
+        </TouchableOpacity>
+        <HeaderText>Clientes</HeaderText>
+      </Header>
       <StepViewer />
       <SearchField text="Informe o nome do cliente..." />
 
@@ -106,7 +124,7 @@ export default function Products() {
         renderItem={({ item, index }: any) => (
           <>
             <TouchableOpacity
-              onPress={() => handleOnPress(item)}
+              onPress={() => navigation.navigate('Products', item)}
             >
               <ClientCard
                 item_index={index}

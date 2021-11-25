@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Feather } from '@expo/vector-icons'; 
 
 import {
   Container,
@@ -18,12 +19,15 @@ import {
   ProductQuantity,
   InvisibleLine,
   TotalsWrapper,
-  TotalItems
+  TotalItems,
+  BuyButton,
+  ButtonText,
+  Header,
+  HeaderText
 } from './styles';
 
-import Header from '../../components/Header';
 import { StepViewer } from '../../components/StepViewer';
-import { Button } from '../../components/Button';
+import { TouchableOpacity } from 'react-native';
 
 interface DataProps {
   id: string;
@@ -46,10 +50,37 @@ const data: DataProps[] = [
     img: 'https://i1.wp.com/hashiratech.com.br/wp-content/uploads/2021/09/foto4-azul.png?fit=384%2C449&ssl=1'
   }];
 
-export default function Cart() {
+export default function Cart({ route, navigation }) {
+  const [products, setProducts] = useState([]);
+  const [client, setClient] = useState({});
+
+  useEffect(() => {
+    let temporaryArray = [];
+    temporaryArray.push(route.params.product);
+
+    setClient(route.params.client);
+    setProducts(temporaryArray);
+  }, []);
+
   return (
     <Container>
-      <Header header_text="Carrinho" />
+      <Header>
+        <TouchableOpacity
+          style={{ 
+            position: 'absolute',
+            left: 20,
+            top: 25
+          }}
+          onPress={() => navigation.goBack()}
+        >
+          <Feather 
+            name="arrow-left"
+            color="#6B2F23"
+            size={30}
+          />
+        </TouchableOpacity>
+        <HeaderText>Carrinho</HeaderText>
+      </Header>
       <StepViewer />
       <Resume>
         <IconCart />
@@ -62,14 +93,14 @@ export default function Cart() {
       </Resume>
 
       <ProductsList
-        data={data}
+        data={products}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item: DataProps) => item.id}
         renderItem={({ item, index }: any) => (
           <>
             <ProductCard
               item_index={index}
-              length={data.length}
+              length={products.length}
             >
               <ProductImage source={{ uri: item.img }} />
               <TextView>
@@ -82,11 +113,18 @@ export default function Cart() {
                 <IconAdd />
               </QuantityProduct>
             </ProductCard>
-            {(index + 1) === data.length ? <InvisibleLine /> : <Line />}
+            {(index + 1) === products.length ? <InvisibleLine /> : <Line />}
           </>
         )}
       />
-      <Button button_text="Comprar!"/>
+      <BuyButton
+        onPress={() => navigation.navigate('Finalization', {
+          client: client,
+          qtdItems: 2,
+        })}
+      >
+        <ButtonText>Comprar</ButtonText>
+      </BuyButton>
     </Container>
   );
 }

@@ -93,3 +93,25 @@ export const Line = styled.View`
   border-bottom-width: 1px;
   border-color: ${({ theme }) => theme.colors.title};
 `;
+
+export const Header = styled.View`
+  width: 100%;
+  height: ${RFValue(85)}px;
+
+  align-self: center;
+  align-items: center;
+
+  flex-direction: row;
+  justify-content: center;
+
+  background-color: ${({ theme }) => theme.colors.primary};
+`;
+
+export const HeaderText = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: ${RFValue(36)}px;
+
+  color: ${({ theme }) => theme.colors.title};
+
+  align-self: center;
+`;

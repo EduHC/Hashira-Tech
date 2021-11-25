@@ -1,6 +1,6 @@
 import React from 'react';
+import { Feather } from '@expo/vector-icons';
 
-import Header from '../../components/Header';
 import { Button } from '../../components/Button';
 
 import {
@@ -24,17 +24,38 @@ import {
   City,
   AddressAdditionalinfo,
   Postcode,
-  State
+  State,
+  Header,
+  HeaderText,
+  ButtonText,
+  FinalizeButton
 } from './styles';
+import { TouchableOpacity } from 'react-native';
 
-export default function Finalization() {
+export default function Finalization({ route, navigation }) {
   return (
     <Container >
-      <Header header_text="Finalização" />
+      <Header>
+        <TouchableOpacity
+          style={{
+            position: 'absolute',
+            left: 20,
+            top: 25
+          }}
+          onPress={() => navigation.goBack()}
+        >
+          <Feather
+            name="arrow-left"
+            color="#6B2F23"
+            size={30}
+          />
+        </TouchableOpacity>
+        <HeaderText>Finalização</HeaderText>
+      </Header>
       <TopSection>
         <InformativeFields>
           <LeftSide>
-            <QuantityItems>8 Itens</QuantityItems>
+            <QuantityItems>{route.params.qtdItems} Itens</QuantityItems>
             <Subtotal>Subtotal: R$ 200,00</Subtotal>
           </LeftSide>
           <TotalValue>Total: R$ 200,00</TotalValue>
@@ -47,20 +68,24 @@ export default function Finalization() {
         </DiscountSection>
       </TopSection>
       <ClientSection>
-        <ClientName>Great Old One Cthulhu</ClientName>
-        <ClientEmail>Email: tchutchuco.hell@hellzin.end</ClientEmail>
-        <ClientPhone>Fone: (66) 96666-6666</ClientPhone>
+        <ClientName>{route.params.client.name}</ClientName>
+        <ClientEmail>Cpf: {route.params.client.cpf}</ClientEmail>
+        <ClientPhone>Fone: {route.params.client.fone}</ClientPhone>
       </ClientSection>
       <ShippingSection>
         <ShippingTitle>Entrega:</ShippingTitle>
-        <Address>Endereço: Rua dos Caralhos</Address>
-        <City>Cidade: Sua mãe</City>
+        <Address>Endereço: Rua dos Carvalhos</Address>
+        <City>Cidade: Cascavel</City>
         <AddressAdditionalinfo>
           <Postcode>CEP: 855555</Postcode>
           <State>UF: Universo</State>
         </AddressAdditionalinfo>
       </ShippingSection>
-      <Button button_text="Finalizar" />
+      <FinalizeButton
+        onPress={() => navigation.navigate('Clients')}
+      >
+        <ButtonText>Finalizar</ButtonText>
+      </FinalizeButton>
     </Container>
   )
 }

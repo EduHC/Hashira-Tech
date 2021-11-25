@@ -183,3 +183,49 @@ export const State = styled.Text`
 
   color: ${({ theme }) => theme.colors.title};
 `;
+
+export const Header = styled.View`
+  width: 100%;
+  height: ${RFValue(85)}px;
+
+  align-self: center;
+  align-items: center;
+
+  flex-direction: row;
+  justify-content: center;
+
+  background-color: ${({ theme }) => theme.colors.primary};
+`;
+
+export const HeaderText = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: ${RFValue(36)}px;
+
+  color: ${({ theme }) => theme.colors.title};
+
+  align-self: center;
+`;
+
+export const FinalizeButton = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.6
+})`
+  background-color: ${({ theme }) => theme.colors.components};
+
+  width: 45%;
+  height: 60px;
+
+  margin-bottom: ${RFValue(100)}px;
+
+  border-radius: 8px;
+
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ButtonText = styled.Text`
+  font-size: ${RFValue(24)}px;
+  
+  color: ${({ theme }) => theme.colors.button_text};
+  letter-spacing: 3px;
+`;

@@ -10,11 +10,7 @@ import {
 } from '@expo-google-fonts/rajdhani';
 
 import theme from './src/global/styles/theme';
-import Login from './src/screens/Login';
-import Cart from './src/screens/Cart';
-import Products from './src/screens/Products';
-import Clients from './src/screens/Clients';
-import Finalization from './src/screens/Finalization';
+import Routes from './src/routes/routes';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -29,7 +25,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar hidden={true} />
-      <Finalization />
+      <Routes />
     </ThemeProvider>
   );
 }

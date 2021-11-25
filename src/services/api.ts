@@ -9,8 +9,6 @@ api.interceptors.request.use(
   request => {
   
     request.url = request.url + `?consumer_key=${oauth.consumer.key}&consumer_secret=${oauth.consumer.secret}`
-
-    //console.log('To no interceptor ' + JSON.stringify(request.url));
     return request;
   }
 );

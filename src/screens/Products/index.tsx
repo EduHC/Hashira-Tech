@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
+import { Feather } from '@expo/vector-icons'; 
 
 import {
   Container,
@@ -8,12 +9,13 @@ import {
   ProductImage,
   ProductPrice,
   ProductName,
-  TextView
+  TextView,
+  Header,
+  HeaderText
 } from './styles';
 
 import { StepViewer } from '../../components/StepViewer';
 import { SearchField } from '../../components/SearchField';
-import Header from '../../components/Header';
 import api from '../../services/api';
 
 
@@ -71,9 +73,9 @@ const data: DataProps[] = [
 
 
 
-export default function Products() {
+export default function Products({ route, navigation }) {
   const [teste, setTeste] = useState({});
-  const [selectedProduct, setSelectedProduct] = useState({});
+  const [client, setClient] = useState({});
 
   async function GetData() {
     try {
@@ -84,18 +86,31 @@ export default function Products() {
     }
   }
 
-  /*useEffect(() => {
-     GetData();
-   }, [])*/
+  useEffect(() => {
+     setClient(route.params)
+   }, [])
 
-  const handleOnPress = (product: DataProps) => {
-    setSelectedProduct(product);
-  }
 
 
   return (
     <Container>
-      <Header header_text="Produtos" />
+      <Header>
+        <TouchableOpacity
+          style={{
+            position: 'absolute',
+            left: 20,
+            top: 25
+          }}
+          onPress={() => navigation.goBack()}
+        >
+          <Feather
+            name="arrow-left"
+            color="#6B2F23"
+            size={30}
+          />
+        </TouchableOpacity>
+        <HeaderText>Clientes</HeaderText>
+      </Header>
       <StepViewer />
       <SearchField text="Informe o produto..." />
 
@@ -107,7 +122,10 @@ export default function Products() {
         renderItem={({ item, index }: any) => (
           <>
             <TouchableOpacity
-              onPress={() => handleOnPress(item)}
+              onPress={() => navigation.navigate('Cart', {
+                client: client,
+                product: item
+              })}
             >
               <ProductCard
                 item_index={index}
